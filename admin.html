@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecnoDUOC - Panel de Administración</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Estilos Personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- HEADER & NAVBAR SEMÁNTICO -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-duoc sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="bi bi-cpu-fill text-warning me-2"></i>Tecno<span>DUOC</span> <span class="badge bg-warning text-dark fs-6 ms-2">Panel Admin</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html"><i class="bi bi-house-door me-1"></i> Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="productos.html"><i class="bi bi-grid me-1"></i> Ver Catálogo Público</a>
+                        </li>
+                    </ul>
+
+                    <div class="d-flex align-items-center gap-3">
+                        <div id="nav-usuario-info" class="d-flex align-items-center"></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="py-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1 class="h2 fw-bold text-primary mb-1"><i class="bi bi-gear-wide-connected me-2"></i>Mantenedor del Sistema</h1>
+                    <p class="text-muted mb-0">Gestión centralizada de productos y usuarios registrados.</p>
+                </div>
+            </div>
+
+            <!-- SECCIÓN: AGREGAR NUEVO PRODUCTO -->
+            <section class="mb-5">
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-header bg-primary text-white py-3">
+                        <h3 class="h5 fw-bold mb-0"><i class="bi bi-plus-circle me-2"></i>Agregar Nuevo Producto al Catálogo</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="alert alert-danger p-2 small mb-3" id="admin-prod-error" style="display: none;"></div>
+
+                        <form id="admin-form-producto" class="row g-3" novalidate>
+                            <div class="col-md-6">
+                                <label for="prod-nombre" class="form-label">Nombre del Producto *</label>
+                                <input type="text" class="form-control" id="prod-nombre" placeholder="Ej: Teclado Mecánico RGB" required>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="prod-categoria" class="form-label">Categoría *</label>
+                                <select class="form-select" id="prod-categoria" required>
+                                    <option value="">Selecciona...</option>
+                                    <option value="Laptops">Laptops</option>
+                                    <option value="Monitores">Monitores</option>
+                                    <option value="Periféricos">Periféricos</option>
+                                    <option value="Audio">Audio</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="prod-precio" class="form-label">Precio ($ CLP) *</label>
+                                <input type="number" class="form-control" id="prod-precio" placeholder="Ej: 49990" min="1" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="prod-imagen" class="form-label">URL de Imagen (Opcional)</label>
+                                <input type="url" class="form-control" id="prod-imagen" placeholder="https://ejemplo.com/imagen.jpg (Si se deja en blanco, se asignará una por defecto)">
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="prod-desc" class="form-label">Descripción del Producto *</label>
+                                <textarea class="form-control" id="prod-desc" rows="2" placeholder="Breve descripción técnica del artículo..." required></textarea>
+                            </div>
+
+                            <div class="col-12 text-end mt-3">
+                                <button type="submit" class="btn btn-primary fw-bold px-4 py-2">
+                                    <i class="bi bi-save me-1"></i> Guardar Producto
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: TABLA DE PRODUCTOS ALMACENADOS -->
+            <section class="mb-5">
+                <h3 class="h4 fw-bold text-primary mb-3"><i class="bi bi-box-seam me-2"></i>Productos en Almacén</h3>
+                <div class="table-responsive">
+                    <table class="table table-hover table-custom align-middle">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Producto</th>
+                                <th>Categoría</th>
+                                <th>Precio</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-tabla-productos">
+                            <!-- JS Render -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: TABLA DE USUARIOS REGISTRADOS -->
+            <section>
+                <h3 class="h4 fw-bold text-primary mb-3"><i class="bi bi-people me-2"></i>Usuarios Registrados en el Sistema</h3>
+                <div class="table-responsive">
+                    <table class="table table-hover table-custom align-middle">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Correo Electrónico</th>
+                                <th>Rol asignado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-tabla-usuarios">
+                            <!-- JS Render -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- FOOTER SEMÁNTICO INFORMATIVO -->
+    <footer>
+        <div class="container text-center footer-bottom">
+            <p class="mb-0">&copy; 2024-2026 TecnoDUOC. Desarrollado para Evaluación Parcial N° 1 - Módulo Admin.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

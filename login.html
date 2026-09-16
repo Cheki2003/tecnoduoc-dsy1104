@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecnoDUOC - Iniciar Sesión / Registro</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Estilos Personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- HEADER & NAVBAR SEMÁNTICO -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-duoc sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="bi bi-cpu-fill text-warning me-2"></i>Tecno<span>DUOC</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html"><i class="bi bi-house-door me-1"></i> Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="productos.html"><i class="bi bi-grid me-1"></i> Catálogo</a>
+                        </li>
+                    </ul>
+
+                    <div class="d-flex align-items-center gap-3">
+                        <a href="carrito.html" class="btn btn-outline-light position-relative">
+                            <i class="bi bi-cart3 fs-5"></i>
+                            <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-cart">0</span>
+                        </a>
+                        <div id="nav-usuario-info" class="d-flex align-items-center"></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-7 col-lg-6">
+                    
+                    <!-- NOTA DEMOSTRATIVA DE CREDENCIALES PARA EVALUACIÓN -->
+                    <div class="alert alert-info border-0 shadow-sm mb-4" role="alert">
+                        <h6 class="alert-heading fw-bold mb-1"><i class="bi bi-info-circle-fill me-2"></i>Credenciales de Prueba para Evaluación:</h6>
+                        <ul class="mb-0 small ps-3">
+                            <li><strong>Rol Administrador:</strong> <code>admin@duoc.cl</code> | Clave: <code>admin123</code></li>
+                            <li><strong>Rol Usuario Normal:</strong> <code>estudiante@duoc.cl</code> | Clave: <code>user123</code></li>
+                        </ul>
+                    </div>
+
+                    <div class="form-container">
+                        <!-- PESTAÑAS LOGIN / REGISTRO -->
+                        <ul class="nav nav-pills nav-justified mb-4" id="authTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active fw-bold" id="login-tab" data-bs-toggle="pill" data-bs-target="#login-panel" type="button" role="tab">
+                                    <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar Sesión
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link fw-bold" id="register-tab" data-bs-toggle="pill" data-bs-target="#register-panel" type="button" role="tab">
+                                    <i class="bi bi-person-plus me-1"></i> Registrarse
+                                </button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content" id="authTabsContent">
+                            
+                            <!-- FORMULARIO DE INICIO DE SESIÓN -->
+                            <div class="tab-pane fade show active" id="login-panel" role="tabpanel">
+                                <form id="login-form" novalidate>
+                                    <div class="alert alert-danger p-2 small mb-3" id="login-general-error" style="display: none;"></div>
+
+                                    <div class="mb-3">
+                                        <label for="login-email" class="form-label">Correo Electrónico</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                            <input type="email" class="form-control" id="login-email" placeholder="ejemplo@duoc.cl" autocomplete="username">
+                                        </div>
+                                        <div class="error-message" id="login-email-error"></div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="login-password" class="form-label">Contraseña</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                            <input type="password" class="form-control" id="login-password" placeholder="Tu contraseña" autocomplete="current-password">
+                                        </div>
+                                        <div class="error-message" id="login-password-error"></div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary w-100 py-2 fw-bold mt-2">
+                                        <i class="bi bi-box-arrow-in-right me-1"></i> Ingresar a TecnoDUOC
+                                    </button>
+                                </form>
+                            </div>
+
+                            <!-- FORMULARIO DE REGISTRO -->
+                            <div class="tab-pane fade" id="register-panel" role="tabpanel">
+                                <form id="register-form" novalidate>
+                                    <div class="mb-3">
+                                        <label for="reg-nombre" class="form-label">Nombre Completo</label>
+                                        <input type="text" class="form-control" id="reg-nombre" placeholder="Juan Pérez">
+                                        <div class="error-message" id="reg-nombre-error"></div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="reg-email" class="form-label">Correo Electrónico</label>
+                                        <input type="email" class="form-control" id="reg-email" placeholder="juan.perez@duoc.cl">
+                                        <div class="error-message" id="reg-email-error"></div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="reg-password" class="form-label">Contraseña</label>
+                                        <input type="password" class="form-control" id="reg-password" placeholder="Mínimo 6 caracteres">
+                                        <div class="error-message" id="reg-password-error"></div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="reg-confirm-password" class="form-label">Confirmar Contraseña</label>
+                                        <input type="password" class="form-control" id="reg-confirm-password" placeholder="Repite tu contraseña">
+                                        <div class="error-message" id="reg-confirm-error"></div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-success w-100 py-2 fw-bold mt-2">
+                                        <i class="bi bi-person-check me-1"></i> Crear Cuenta
+                                    </button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER SEMÁNTICO INFORMATIVO -->
+    <footer>
+        <div class="container">
+            <div class="text-center footer-bottom">
+                <p class="mb-0">&copy; 2024-2026 TecnoDUOC. Desarrollado para Evaluación Parcial N° 1.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

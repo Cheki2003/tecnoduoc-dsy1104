@@ -1,0 +1,212 @@
+
+
+/* Variables de Colores Institucionales y de Marca */
+:root {
+    --primary-color: #002b49;       /* Azul Duoc */
+    --accent-color: #ffb81c;        /* Amarillo/Dorado Duoc */
+    --secondary-color: #0076a3;     /* Azul secundario */
+    --dark-bg: #121824;
+    --light-bg: #f8f9fa;
+    --text-dark: #212529;
+    --text-muted: #6c757d;
+    --success-green: #198754;
+    --danger-red: #dc3545;
+    --border-radius-custom: 12px;
+    --box-shadow-custom: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* 
+   Header & Navbar
+    */
+.navbar-duoc {
+    background-color: var(--primary-color) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-duoc .navbar-brand {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #ffffff !important;
+}
+
+.navbar-duoc .navbar-brand span {
+    color: var(--accent-color);
+}
+
+.navbar-duoc .nav-link {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+}
+
+.navbar-duoc .nav-link:hover,
+.navbar-duoc .nav-link.active {
+    color: var(--accent-color) !important;
+}
+
+.badge-cart {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* 
+   Hero & Carrusel
+    */
+.hero-carousel .carousel-item {
+    height: 380px;
+    background-color: var(--dark-bg);
+}
+
+.hero-carousel img {
+    object-fit: cover;
+    height: 100%;
+    filter: brightness(0.7);
+}
+
+.hero-carousel .carousel-caption {
+    background: rgba(0, 43, 73, 0.75);
+    backdrop-filter: blur(4px);
+    border-radius: var(--border-radius-custom);
+    padding: 20px 30px;
+    margin-bottom: 20px;
+}
+
+/* 
+   Tarjetas de Productos (Cards)
+    */
+.product-card {
+    border: none;
+    border-radius: var(--border-radius-custom);
+    box-shadow: var(--box-shadow-custom);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
+    background: #ffffff;
+    height: 100%;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.product-card .card-img-top {
+    height: 200px;
+    object-fit: contain;
+    padding: 15px;
+    background-color: #ffffff;
+}
+
+.product-card .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.product-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+/* 
+   Formularios y Validaciones
+    */
+.form-container {
+    background: #ffffff;
+    border-radius: var(--border-radius-custom);
+    box-shadow: var(--box-shadow-custom);
+    padding: 35px;
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 0.25rem rgba(0, 118, 163, 0.25);
+}
+
+/* Estilos de Error en Validaciones JS */
+.is-invalid-custom {
+    border-color: var(--danger-red) !important;
+    background-image: none !important;
+}
+
+.error-message {
+    color: var(--danger-red);
+    font-size: 0.875rem;
+    margin-top: 4px;
+    display: none;
+}
+
+.error-message.active {
+    display: block;
+}
+
+/* 
+   Tabla de Carrito y Administrador
+   */
+.table-custom {
+    background: #ffffff;
+    border-radius: var(--border-radius-custom);
+    overflow: hidden;
+    box-shadow: var(--box-shadow-custom);
+}
+
+.table-custom th {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-weight: 600;
+    border: none;
+}
+
+.cart-summary-box {
+    background: #ffffff;
+    border-radius: var(--border-radius-custom);
+    box-shadow: var(--box-shadow-custom);
+    padding: 25px;
+}
+
+/* 
+   Footer Semántico
+    */
+footer {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    margin-top: 60px;
+}
+
+footer a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    color: var(--accent-color);
+}
+
+footer .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 30px;
+    padding-top: 15px;
+    font-size: 0.9rem;
+}

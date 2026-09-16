@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecnoDUOC - Tienda de Tecnología y Electrónica</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Estilos Personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- HEADER & NAVBAR SEMÁNTICO -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-duoc sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="bi bi-cpu-fill text-warning me-2"></i>Tecno<span>DUOC</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html"><i class="bi bi-house-door me-1"></i> Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="productos.html"><i class="bi bi-grid me-1"></i> Catálogo</a>
+                        </li>
+                        <li class="nav-item" id="link-admin-item" style="display: none;">
+                            <a class="nav-link text-warning fw-bold" href="admin.html"><i class="bi bi-shield-lock me-1"></i> Mantenedor Admin</a>
+                        </li>
+                    </ul>
+
+                    <div class="d-flex align-items-center gap-3">
+                        <!-- Botón Carrito de Compras -->
+                        <a href="carrito.html" class="btn btn-outline-light position-relative">
+                            <i class="bi bi-cart3 fs-5"></i>
+                            <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-cart">0</span>
+                        </a>
+
+                        <!-- Información de Usuario / Login -->
+                        <div id="nav-usuario-info" class="d-flex align-items-center">
+                            <!-- Se renderiza dinámicamente con JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECCIÓN: CARRUSEL DE PROMOCIONES Y DESTACADOS -->
+        <section aria-label="Carrusel de Ofertas Destacadas">
+            <div id="heroCarousel" class="carousel slide hero-carousel carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="4000">
+                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1200&auto=format&fit=crop&q=80" class="d-block w-100" alt="Laptops de última generación">
+                        <div class="carousel-caption d-none d-md-block text-start">
+                            <h2 class="fw-bold text-warning">Tecnología de Alto Rendimiento</h2>
+                            <p>Encuentra los mejores laptops y equipos gamer con descuentos especiales para estudiantes.</p>
+                            <a href="productos.html" class="btn btn-warning fw-bold"><i class="bi bi-bag-check me-1"></i> Ver Catálogo Completo</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="4000">
+                        <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=1200&auto=format&fit=crop&q=80" class="d-block w-100" alt="Monitores e Imagen">
+                        <div class="carousel-caption d-none d-md-block text-start">
+                            <h2 class="fw-bold text-warning">Monitores y Periféricos Gamer</h2>
+                            <p>Equipa tu setup con monitores de alta frecuencia de refresco y teclados mecánicos.</p>
+                            <a href="productos.html" class="btn btn-warning fw-bold"><i class="bi bi-arrow-right-circle me-1"></i> Explorar Periféricos</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="4000">
+                        <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=1200&auto=format&fit=crop&q=80" class="d-block w-100" alt="Audio y Calidad Sonora">
+                        <div class="carousel-caption d-none d-md-block text-start">
+                            <h2 class="fw-bold text-warning">Audio de Alta Fidelidad</h2>
+                            <p>Audífonos con cancelación de ruido y micrófono profesional para clases y streaming.</p>
+                            <a href="productos.html" class="btn btn-warning fw-bold"><i class="bi bi-headphones me-1"></i> Comprar Audio</a>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: TARJETAS DE BENEFICIOS Y CARACTERÍSTICAS -->
+        <section class="py-5 bg-white border-bottom">
+            <div class="container">
+                <div class="row g-4 text-center">
+                    <div class="col-md-4">
+                        <div class="p-3">
+                            <i class="bi bi-truck text-primary display-5 mb-3"></i>
+                            <h3 class="h5 fw-bold">Despacho Exprés</h3>
+                            <p class="text-muted small">Envíos a todo Chile con seguimiento en tiempo real de tu paquete.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3">
+                            <i class="bi bi-shield-check text-primary display-5 mb-3"></i>
+                            <h3 class="h5 fw-bold">Garantía Oficial DUOC</h3>
+                            <p class="text-muted small">Todos nuestros productos cuentan con 12 meses de garantía directa.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3">
+                            <i class="bi bi-credit-card text-primary display-5 mb-3"></i>
+                            <h3 class="h5 fw-bold">Pagos Seguros</h3>
+                            <p class="text-muted small">Simulación de pago protegida con cupones de descuento exclusivos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: PRODUCTOS DESTACADOS DEL INICIO -->
+        <section class="py-5">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h2 class="fw-bold mb-1"><i class="bi bi-star-fill text-warning me-2"></i>Productos Destacados</h2>
+                        <p class="text-muted mb-0">Los artículos más elegidos por nuestra comunidad estudiantil.</p>
+                    </div>
+                    <a href="productos.html" class="btn btn-outline-primary fw-semibold">Ver Todos los Productos &rarr;</a>
+                </div>
+
+                <!-- Contenedor dinámico donde JS renderizará los productos -->
+                <div class="row" id="inicio-productos-container">
+                    <!-- Se carga dinámicamente con productos.js -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER SEMÁNTICO INFORMATIVO -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h3 class="h5 text-warning fw-bold mb-3"><i class="bi bi-cpu-fill me-2"></i>TecnoDUOC</h3>
+                    <p class="small text-light-50">Proyecto de evaluación para la asignatura Desarrollo Fullstack II (DSY1104). Plataforma e-commerce frontend construida con HTML5, CSS3, Bootstrap 5 y JavaScript.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="h5 fw-bold mb-3">Navegación Rápida</h3>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="index.html"><i class="bi bi-chevron-right me-1"></i> Inicio</a></li>
+                        <li class="mb-2"><a href="productos.html"><i class="bi bi-chevron-right me-1"></i> Catálogo de Productos</a></li>
+                        <li class="mb-2"><a href="login.html"><i class="bi bi-chevron-right me-1"></i> Iniciar Sesión / Registro</a></li>
+                        <li class="mb-2"><a href="carrito.html"><i class="bi bi-chevron-right me-1"></i> Mi Carrito de Compras</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="h5 fw-bold mb-3">Contacto e Información</h3>
+                    <p class="small mb-1"><i class="bi bi-geo-alt me-2"></i> Duoc UC - Sede San Joaquín / Antonio Varas</p>
+                    <p class="small mb-1"><i class="bi bi-envelope me-2"></i> soporte@tecnoduoc.cl</p>
+                    <p class="small mb-3"><i class="bi bi-telephone me-2"></i> +56 9 1234 5678</p>
+                    <div class="d-flex gap-3 fs-5">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-github"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center footer-bottom">
+                <p class="mb-0">&copy; 2024-2026 TecnoDUOC. Desarrollado para Evaluación Parcial N° 1 - Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Scripts de la Aplicación -->
+    <script src="js/productos.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const productos = obtenerProductos();
+            renderizarProductos(productos, "inicio-productos-container", 3);
+        });
+    </script>
+</body>
+</html>
