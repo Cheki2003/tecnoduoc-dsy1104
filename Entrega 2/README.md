@@ -61,5 +61,9 @@ src/
   tests/           pruebas con Jasmine
 ```
 
+## Changelog
+
+Consulta el [changelog](CHANGELOG.md) para ver los cambios de esta versión respecto de la primera entrega.
+
 Como todavía no hay backend, los datos se guardan en el localStorage del navegador.
 Para volver a los datos iniciales basta con borrar el localStorage del sitio.
